@@ -367,7 +367,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 9.5
+  m_Intensity: 20
   m_Range: 4.32
   m_SpotAngle: 74.75
   m_InnerSpotAngle: 53.12708
@@ -443,8 +443,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6438383801569357509}
-  m_LocalRotation: {x: -0, y: 0.68242353, z: -0, w: -0.7309571}
-  m_LocalPosition: {x: -4.11, y: 0, z: 1.33}
+  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
+  m_LocalPosition: {x: -3.02, y: 0, z: 2.64}
   m_LocalScale: {x: 2.6617882, y: 2.6617882, z: 2.6617882}
   m_Children:
   - {fileID: 1056230107661896383}
@@ -454,7 +454,7 @@ Transform:
   - {fileID: 6167910746901467592}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 273.93298, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
 --- !u!54 &6167910747042582098
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -496,4 +496,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8ddaa1a0dd33af48b5e6689eff0c1e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  counterText: {fileID: 0}

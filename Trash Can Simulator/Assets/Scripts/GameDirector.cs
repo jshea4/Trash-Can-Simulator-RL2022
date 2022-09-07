@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 
@@ -13,6 +12,7 @@ public class GameDirector : MonoBehaviour {
 	[SerializeField] private TextMeshProUGUI counterText;
 	[SerializeField] private TextMeshProUGUI timerText;
 	[SerializeField] private GameObject youWinUi;
+	[SerializeField] private GameObject leaderboard;
 
 	private int trashCount = 0;
 	private const int TOTAL_TRASH = 3;
@@ -38,7 +38,7 @@ public class GameDirector : MonoBehaviour {
 		Instantiate(car);
 		Instantiate(volleyBall);
 
-		if (loadTrashCan) { //load in trash can, if flash is true
+		if (loadTrashCan) { //load in trash can, if argument is true
 			var trashCan = Resources.Load("Prefabs/TrashCan") as GameObject;
 			Instantiate(trashCan);
 		}
@@ -53,12 +53,14 @@ public class GameDirector : MonoBehaviour {
 	}
 
 	public void Restart() { //Restart the game without resetting the scene.
+		//reset everything:
 		youWinUi.SetActive(false);
 		trashCount = 0;
 		currentTime = 0;
 		counterText.SetText("Trash Collected: " + trashCount);
 		timerText.SetText("Time: " + currentTime.ToString("0.00"));
 		timerOn = true;
+		//load objects other than trash can:
 		LoadObjects(false);
 	}
 
@@ -70,8 +72,9 @@ public class GameDirector : MonoBehaviour {
 
 		//When the user has collected enough trash, end the game
 		if (trashCount >= TOTAL_TRASH) { 
-			timerOn = false;
-			youWinUi.SetActive(true);
+			timerOn = false;			//stop timer
+			youWinUi.SetActive(true);	//show win UI
+			leaderboard.GetComponent<LeaderboardManager>().AddTime(currentTime); //send time to leaderboard
 		}
 		
 	}

@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PickupObject : MonoBehaviour {
-	[SerializeField] private Transform holdLocation;
-	[SerializeField] private int pickupRange = 2;
-	private Transform heldObject;
+	[SerializeField] private Transform holdLocation; //location by camera that grabbed objects go
+	[SerializeField] private int pickupRange = 2;	 
+	private Transform heldObject; 					//object currently being held
 	private Camera cam;
-	[SerializeField] private Text crosshairUi;
+	[SerializeField] private Text crosshairUi; 		//cross in center of screen
 
 	void Start() {
 		cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
