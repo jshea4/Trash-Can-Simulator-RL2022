@@ -2257,7 +2257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba5ab6776ea82d4693846e7487c2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 200
+  mouseSensitivity: 2
   walkSpeed: 4
 --- !u!143 &1341266766
 CharacterController:

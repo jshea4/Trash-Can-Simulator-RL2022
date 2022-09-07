@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 	private Camera cam;	
 	private CharacterController controller;
 
-	[SerializeField] private float mouseSensitivity = 200f;
+	[SerializeField] private float mouseSensitivity = 2f;
 	[SerializeField] private float walkSpeed = 4;
 	
 	private float totalCamXRotation = 0f; //X rotation controls looking up/down
@@ -21,8 +21,10 @@ public class PlayerMovement : MonoBehaviour {
     void Update() {
 		//~~~~~~~LOOK AROUND~~~~~~~
 		//Note: To look up, the X rotation is affected; To look left, the Y rotation is affected
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+		//Note2: Mouse movement is inherently framerate independent (as you are physically moving the mouse),
+		//		 so time.deltatime is not needed.
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 		
 		totalCamXRotation -= mouseY; 
 		totalCamXRotation = Mathf.Clamp(totalCamXRotation, -90f, 90f); //Prevent player from looking too high or too low
