@@ -4,41 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class TrashCan : MonoBehaviour
-{
-	private TextMeshProUGUI counterText;
-	private TextMeshProUGUI timerText;
-
-	private int trashCount = 0;
-	private const int TOTAL_TRASH = 3;
-	
-	private bool timerOn = false;
-	private float currentTime = 0;
+public class TrashCan : MonoBehaviour {
+	private GameDirector gameDirector;
 
 	void Start() {
-		counterText = GameObject.FindWithTag("TrashCounter").GetComponent<TextMeshProUGUI>();
-		timerText = GameObject.FindWithTag("Timer").GetComponent<TextMeshProUGUI>();
-		counterText.enabled = true;
-		timerText.enabled = true;
-		timerOn = true;
+		gameDirector = GameObject.FindWithTag("GameScreen").GetComponent<GameDirector>();
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.CompareTag("Trash")) {
-			++trashCount;
-			counterText.SetText("Trash Collected: " + trashCount);
+		if (collision.gameObject.CompareTag("Trash")) { //Handle trash collision
+			gameDirector.IncrementTrashCount();
 			Destroy(collision.gameObject);
-
-			if (trashCount >= TOTAL_TRASH) {
-				timerOn = false;
-			}
-		}
-	}
-
-	void Update() {
-		if (timerOn) {
-			currentTime += Time.deltaTime;
-			timerText.SetText("Time: " + currentTime.ToString("0.00"));
 		}
 	}
 }

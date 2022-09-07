@@ -12,7 +12,6 @@ public class PickupObject : MonoBehaviour {
 
 	void Start() {
 		cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
-		crosshairUi.enabled = true;
 	}
 
     void Update() {
